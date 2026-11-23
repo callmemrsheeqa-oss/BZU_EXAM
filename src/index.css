@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Configurable BZU-inspired theme approximation tokens.
+  NOTE: No official BZU brand style guide or licensed assets were supplied;
+  these colors are configurable approximations for prototype demonstration.
+*/
+:root {
+  --bzu-primary: #0b6e4f;
+  --bzu-primary-hover: #08563d;
+  --bzu-accent-gold: #b45309;
+  --bzu-surface: #ffffff;
+  --bzu-canvas: #f8fafc;
+  --bzu-border: #e2e8f0;
+  --bzu-text: #0f172a;
+  --bzu-text-muted: #475569;
+
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+.dark {
+  --bzu-primary: #10b981;
+  --bzu-primary-hover: #059669;
+  --bzu-accent-gold: #f59e0b;
+  --bzu-surface: #0f172a;
+  --bzu-canvas: #020617;
+  --bzu-border: #1e293b;
+  --bzu-text: #f8fafc;
+  --bzu-text-muted: #94a3b8;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--bzu-canvas);
+    color: var(--bzu-text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono, code, pre {
+    font-family: var(--font-mono);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

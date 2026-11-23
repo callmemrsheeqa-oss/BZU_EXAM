@@ -1,0 +1,6 @@
+{
+  "name": "BZU Exam",
+  "description": "Interactive zero-budget university examination prototype for Bahauddin Zakariya University (BZU), Multan — featuring student exam attempts, teacher PDF annotation & grading, admin revision approvals, and official BZU academic calendar integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

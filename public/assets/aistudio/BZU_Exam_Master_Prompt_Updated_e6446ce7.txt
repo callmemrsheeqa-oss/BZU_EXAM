@@ -1,0 +1,203 @@
+BZU EXAM — COMPLETE MASTER DEVELOPMENT PROMPT
+Version: 1.1 (Official Academic Calendar Added) | Project type: Interactive, zero-budget university examination prototype
+
+ROLE AND MISSION
+You are a senior full-stack React/TypeScript engineer, product designer, accessibility specialist and quality-assurance engineer. Build a polished, responsive, DEMONSTRABLE prototype called "BZU Exam" for Bahauddin Zakariya University (BZU), Multan, Pakistan. This is a portfolio/pitch prototype, NOT a production examination system, NOT affiliated with or officially endorsed by BZU. Use entirely fictional records and never claim university authorization or access to a real BZU database. Deliver actual working source code and realistic client-side interactions, not merely mock screenshots, generic descriptions or a landing page.
+
+PRIORITIES AND HARD CONSTRAINTS
+1. Everything required to run and deploy the demo must be free. Do not require a credit card, paid API, paid AI feature, commercial license, external university database or paid authentication provider.
+2. Prefer React + TypeScript + Vite + Tailwind CSS, React Router, Lucide icons, a lightweight animation library (e.g., Motion), and PDF.js for document preview. Use modular components and a straightforward project structure. Use Node.js/npm for local development. Prefer browser-native functionality and lightweight free/open-source packages.
+3. Default persistence is seeded JSON data loaded into IndexedDB (preferred for PDFs and structured mock data) plus localStorage for small preferences/session metadata, or an equivalent clearly explained client-only persistence layer. No shared backend is required. Ensure data survives refresh in the same browser, can be reset, and is isolated per browser/device. Never misrepresent that teacher actions sync to other people's devices.
+4. Make the prototype deployable as a Vite static site on Vercel via GitHub, with SPA fallback routing configuration. No environment variables or paid service should be required for core demo features.
+5. Do not attempt to implement true university integration, genuine institutional email delivery, proctored webcam surveillance or secure production authentication. Label all accounts and results as DEMO/SYNTHETIC. Clearly state that client-side role restrictions and demo passwords are not real security.
+6. A realistic end-to-end demo is more valuable than huge amounts of incomplete functionality. Prioritize complete flows and reliable state transitions over decorative, nonfunctional buttons.
+7. Where some feature is technically impossible or unreliable under free browser-only constraints, implement the best honest simulated/limited workflow, label it in UI, and document the limitation. Do not silently pretend it works.
+8. Use English for all UI copy, notifications, labels, accessible text and generated sample content.
+
+BRANDING, VISUAL DESIGN AND UX
+- App title: BZU Exam. Create an original, modern BZU Exam platform logo and pair it with a BZU-university-logo placement. Use official university branding only as inspiration; if the actual official image/logo is not supplied or licensed, show a clearly labeled placeholder and provide a documented replacement location. Do not invent an 'official' logo.
+- Design: high-quality FUTURISTIC academic SaaS dashboard, with premium typography, clear information hierarchy, tasteful glassmorphism where appropriate, sophisticated cards, microinteractions, accessible contrast, and university-inspired green/gold/neutral accents. Verify actual BZU colors/fonts from an authorized supplied asset before claiming exact matches; otherwise make them configurable approximation variables.
+- Theme: initially follow device prefers-color-scheme; allow Light/Dark/Auto selection. Save manual preference per browser. Auto follows subsequent OS changes.
+- Login layout on desktop: LEFT area is the functional BZU Exam sign-in panel, RIGHT area is a prominent 'Spider Cursor' particle-web animation. The animation follows pointer movement with connected strands/particles resembling a reactive spiderweb; it is NOT a neuron/brain animation and NOT a literal scary spider. Keep subtle, smooth and performant, with reduced-motion support. On touch/mobile, simplify or hide animation. Never let it block form interaction.
+- Responsiveness: desktop, tablet, mobile. Use a collapsible LEFT sidebar + topbar for desktop role dashboards; mobile gets compact drawer/appropriate navigation. Keep examination screens distraction-free with no heavy animation.
+- Accessible controls: keyboard navigation, focus states, screen-reader labels, large touch targets, clear error messages, sufficient contrast, sensible loading/empty states and prefers-reduced-motion.
+- First-time guided tour for each role (Student, Teacher, Admin), with Skip and Replay Tour controls. Demo mode role switcher may appear clearly labeled in the demo toolbar; prevent accidental role change during an active exam.
+
+DEMO ACCOUNT FORMAT AND AUTHENTICATION
+- Generate 500 fictional students, 25 fictional teachers, and 1 fictional admin.
+- Example student login: student001@bzu.edu.pk; example teacher login: teacher001@bzu.edu.pk; example admin login: admin@admin.bzu.edu.pk. These are illustrative dummy usernames; do not send email to them or imply they are genuine BZU accounts.
+- Provide unique deterministic demo passwords for accounts (for example, generated and displayed in a developer-only demo credential sheet) plus convenient "Try Student Demo", "Try Teacher Demo" and "Try Admin Demo" shortcuts. Avoid putting real secrets in repository or collecting actual university credentials. Mock authentication must validate supplied email and demo password against the synthetic dataset, then direct to the appropriate role dashboard.
+- Use email + password as the visible login form. Do NOT permit roll number alone as authentication. Student IDs, roll numbers and registration numbers remain distinct unique profile attributes where applicable.
+- No account self-signup: accounts are seeded from a fictional university dataset. Login and logout work. Show friendly invalid credentials messages. A browser refresh should retain the demo session.
+- Keep role permissions as a well-structured centralized policy in frontend for demonstration, while making it explicit that real security needs backend authorization.
+
+SYNTHETIC UNIVERSITY DATA MODEL
+Make realistic, plausible, wholly fictional and internally consistent records. Implement a reproducible seed generator, not manually typed duplicate entries. Seed 500 students, 25 teachers, 1 admin across multiple departments/programs, including CASPAM/Mathematics as an example. Cover multiple semesters, academic batches, courses, academic calendars, class sections and teaching assignments.
+Student profile must include:
+- full name, profile avatar/photo placeholder, unique university demo email, student ID, roll number, registration number;
+- department, degree program, batch/session, admission/start year, expected completion year (different program durations), semester, section;
+- current/enrolled subjects with subject codes; completed subjects, planned future-semester subjects; sample grades/credits, semester GPA and CGPA;
+- upcoming/past exams, assignments, published results and notifications.
+Do NOT include attendance features. Show progress and course-plan sections as fictional records.
+Teacher profile includes name, avatar, department, unique demo email, assigned courses, class sections and enrolled students. A teacher MUST ONLY access student details relevant to that teacher's assigned courses: show assigned subject information, applicable submissions and marks. Do not expose complete unrelated student transcripts or other teachers' private marks in teacher views. Student can see only their own profile and authorized results. Admin can manage the demo system according to role permissions.
+For synthetic data, build associations and referential consistency: course IDs, teacher IDs, enrollment IDs, exam IDs, student IDs, submission IDs, result IDs, revision IDs. Add seed sample exams/submissions/results/assignments so dashboard doesn't look empty.
+
+STUDENT EXPERIENCE
+After login, student-specific dashboard should show:
+- profile summary with student photo/avatar, degree, batch, department, semester, section and CGPA;
+- upcoming exams, currently available exams, exam statuses, assignments with deadlines, recent results and notifications;
+- current enrolled courses, completed courses, future planned semesters/courses, academic progress;
+- ability to open subject and exam details, view exam instructions, start eligible exam, submit responses, review submissions and results.
+Exam statuses: Upcoming -> Available -> In Progress -> Submitted -> Under Review -> Result Published (apply relevant statuses to each exam; do not fake impossible transitions). Assignment statuses: Not Started -> Open -> Submitted -> Closed -> Graded.
+Only students enrolled in the relevant course can attempt its exam. Demo login alone does NOT entitle every student to every subject.
+
+EXAM TYPES AND SCHEDULING
+Support Midterm, Final Term, Quiz, Class Test and Assignment. Teachers can create exams for their assigned courses; admin may reschedule and manage system-level schedules. Each assessment has title, course, class/section, type, instructions, question sections, total marks, schedule start timestamp, schedule end timestamp, publication date/time, and relevant configuration.
+- Strict, absolute time window: e.g. 10:00 to 11:00. Student may enter at 10:15 but has only until 11:00; NO extra time. Exam countdown is based on fixed wall-clock deadline rather than resetting on login or refresh.
+- On refresh/reopen, preserve already persisted answers and resume remaining time. Internet interruption should not wipe local answers. Show connection status where detectable and sync local draft as applicable (browser-only storage, not remote server). Do not claim that a disconnected browser can upload to a server or successfully share state between devices.
+- On deadline, lock further edits, finalize the locally stored attempt and flag any unsubmitted PDF upload clearly. Show a clear submission receipt and timestamp in local demo data.
+- Exams should support an explicit submit action, confirmation modal, and clear submitted/locked state. Use idempotent submission logic and avoid duplicate submissions.
+- The exam attempt view may show 1 to 5 MCQs per page, adjustable by student. Allow Next, Previous, Skip and return to unanswered items via question navigator; auto-save selections.
+- Show status legend (unanswered/answered/flagged), progress, remaining time and exam instructions.
+
+EXAM INTEGRITY DEMO BEHAVIOR
+- Allow page refresh: do not terminate attempt due to refresh.
+- Detect tab visibility changes / window blur where the browser allows; log an incident and show a clear warning. The warning policy must be transparent before exam start. Do NOT silently auto-submit on a single focus change; the user chose warnings as the preferred behavior. Optionally provide a clearly labeled strict-mode DEMO setting with a configurable warning threshold and possible finalization, but do not imply reliable anti-cheat enforcement.
+- Explain that browsers cannot reliably prevent all switching, other-device cheating, screenshots or hidden secondary screens. Do not use webcam monitoring.
+- Never rely on local browser timers for actual production exam security; this is a simulation.
+
+QUESTION TYPES, AUTHORING AND IMPORT
+Teacher can create MCQs, short-answer and long-answer questions manually using an editor. Support point value, instructions, order, question sections, MCQ options and correct-answer keys. Support text, Unicode math symbols and reasonably formatted equations.
+Teachers can also import PDF and DOCX files, extract their content to a draft editable question list and review/correct extraction. For DOCX use appropriate client library (e.g. mammoth for text extraction); for PDF use PDF.js where it can read text; warn when source is an image scan or when math equations need manual correction. Let teacher assign section, question type, choices, correct options and marks after extraction. A raw PDF upload by itself is not an automatically graded MCQ exam.
+- Optionally support Google Forms question import only when the teacher can provide a suitable authorized export/structured input. Do not claim a direct generic Google Forms URL can be scraped or that private forms can be accessed. Provide a clearly labeled import placeholder/help workflow or a supported CSV/JSON import path.
+- AI-assisted question extraction is OPTIONAL, opt-in and may be integrated only if a genuinely available free tier / user-supplied demo key exists. Never hardcode an API key, never require AI to run core demo, do not claim AI is error free, and do not make fake extraction appear like genuine AI. Always require teacher review before publishing.
+- Include a question bank and exam draft -> preview -> publish flow for teacher.
+
+STUDENT ANSWER METHODS
+MCQs: select options directly in application; instant auto-grading internally from answer key, but DO NOT reveal correct answers or marks during the active exam. Release MCQ scores only with the teacher-published combined result.
+Short/Long: allow either (a) typed answer editor, including optional browser speech-to-text/microphone dictate support where browser capabilities allow; OR (b) one combined PDF upload containing the full subjective paper. Voice transcription must be editable and only claim support where the browser supports it. PDF upload preview, type/size validation, replacement before final submission, and clear upload status. Optionally let students select images of handwritten pages and assemble into one PDF using free client-side libraries. Keep only one final combined PDF per subjective submission. Respect deadline rules.
+For a single attempt, provide clear handling of mixed MCQ and subjective sections and allow typed answers and PDF upload in a way that avoids accidental data loss or ambiguous submission format.
+
+TEACHER DASHBOARD AND GRADING
+Teacher dashboard shows assigned classes/courses, student rosters for those courses, upcoming/live exams, submitted attempts, unchecked subjective work, pending grading, marks and published results. Search/filter by course, section, student, status.
+- Teacher can open a student's PDF directly INSIDE the website (PDF.js viewer), without mandatory download; annotate with digital pen, check marks, highlights and comments where feasible using browser canvas/overlay; save annotations in local prototype state. Make annotations persist across refresh in same browser. Annotations do not need to modify underlying original PDF bytes unless actually implemented. If not embedded in PDF, label them as overlay annotations.
+- Enter question-wise subjective scores and teacher remarks. Combine subjective scores with auto-graded MCQs. Validate marks are within available points. Provide digital marksheet, grading progress and explicit result publication settings.
+- Student sees combined marks, obtained/total, percentage, grade (configurable demo grade scale), subject, teacher feedback and publication timestamp ONLY once published.
+- Keep graded/annotated PDF or annotation record saved internally. Students see their checked paper ONLY if the university/admin permission flag allows it; otherwise student sees marks and permitted remarks only.
+- Result publishing is controlled by teacher's selected date/time, and may be held while any pre-publication marks-revision approval remains pending. Avoid revealing correct MCQ answers while exam remains active.
+
+CRITICAL MARKS REVISION / ADMIN APPROVAL POLICY
+This is a required workflow, not optional:
+1. Teacher may enter initial marks and save an initial grading record.
+2. BEFORE the student's result is published, any subsequent modification of saved marks requires an explicit revision request to Admin. Teacher provides student, course/exam, old marks, proposed new marks, and written justification (e.g. recheck).
+3. Pending revision MUST NOT alter the effective current marks. Admin sees request and approves/rejects with decision note. Approved revision applies the new marks; rejected request retains old marks.
+4. Maintain a transparent audit history (request ID, teacher, student, exam, old/new values, reason, decision, decision timestamp). Provide screens for Teacher "My Revision Requests" and Admin "Pending Approvals".
+5. Prevent publication of an affected result while a marks revision is pending. Teacher sees clear hold status. Once admin resolves it, publishing may continue according to configured release conditions.
+6. After results are published, standard teacher edits are locked. Show locked state. Do not add a hidden bypass that silently edits grades. A real post-publication correction process would require separate governance and is out of scope for this prototype.
+7. For demo usability, seeded sample requests should include pending, approved and rejected states so approval logic can be demonstrated.
+
+ADMIN DASHBOARD AND AUTHORITY
+Admin dashboard should include overview analytics, counts of active/upcoming/past assessments, student/teacher accounts, department/course directory, schedules, assignment windows, result releases, technical incident logs, audit events, pending revision approvals, general demo configuration, reset demo data and guided-tour settings. Admin can adjust/reschedule exam windows with recorded reason and make the changes visible in same-browser demo data.
+- Admin may set a global/student checked-paper visibility policy as a DEMO permission toggle. Teacher must not bypass it.
+- Admin oversees account status and role assignments in the fictional demo dataset; never edit actual institutional data.
+- The admin need not manually change marks; revisions are requested by teachers and approved/rejected by admin.
+- Separate admin screens from Teacher and Student dashboards and prevent unauthorized navigation to irrelevant role routes within the prototype (client-only checks clearly labeled nonsecure).
+
+IMPORTANT: CROSS-ROLE DEMONSTRATION AND LOCAL PERSISTENCE
+Because Option A is selected (browser-only demo), demonstrate the full workflow within ONE browser profile:
+1. Sign in as Teacher Demo and create an exam / mark a seeded submission / request marks revision.
+2. Switch (logout and login) to Admin Demo, approve the revision and manage publication/permissions.
+3. Switch to Student Demo to see published result and, if allowed, the checked PDF.
+Shared demo data persists in the SAME browser storage. Across separate devices, browsers or incognito profiles, changes are not synchronized. Add a prominent "Prototype / Local Demo Data" help section so the university presentation is not misleading.
+- Initial seeded records should come from deterministic fixture generation. A "Reset Demo" button (with confirmation) restores initial fixtures.
+- For large PDF files, IndexedDB is preferred; handle storage-quota errors gracefully. No production cloud upload is taking place.
+
+PAGE / ROUTE REQUIREMENTS
+Public: Login, About Prototype, optional Help / Demo Guide, Not Found.
+Student: Dashboard, My Profile, Academic Progress, Courses, Exams (upcoming/current/history), Exam Instructions, Exam Attempt, My Submissions, Assignments, Results, Notifications, Settings.
+Teacher: Dashboard, My Courses/Classes, Enrolled Students/Assigned Subject Profile, Exam Builder, Question Bank, Exam Schedule, Submissions, Paper Checker/PDF Annotator, Gradebook/Marksheet, Revision Requests, Results Publisher, Notifications, Settings.
+Admin: Dashboard, Accounts, Departments & Courses, Exam Calendar and Rescheduling, Revision Approval Queue, Result Publication and Checked Paper Permissions, Incidents & Audit Logs, Demo Dataset/Reset, Settings.
+Include a role-aware sidebar/topbar, breadcrumbs where helpful, functional search/filter, appropriate confirmation toasts/dialogs, and helpful empty states.
+
+OFFICIAL BZU ACADEMIC CALENDAR — USE AS THE SOURCE FOR SEMESTER-WIDE DATES
+The user supplied a photograph of a Bahauddin Zakariya University, Multan notification dated 18.08.2026, Notification No. Acad/AC-26/7021, which supersedes notification Acad/AC-26/5759 dated 31.07.2026. Use the following explicitly transcribed academic schedule as the calendar data source for this prototype. Do not fabricate more specific official dates, exam hours, timetables, or department-specific exam schedules. Present source metadata on the Academic Calendar page, e.g., "Academic calendar based on BZU notification dated 18 Aug 2026 (demo reproduction)." This academic calendar information is real-source-based; all student records, courses, individual exam slots, submission data, marks, and credentials are SYNTHETIC.
+
+FALL SEMESTER 2026 (Morning/Evening)
+- Semester commencement: 24 August 2026 (2026-08-24).
+- Mid-term examinations: 19 October 2026 through 26 October 2026 (inclusive).
+- Final examinations: 1 January 2027 through 11 January 2027 (inclusive).
+- Results: 15 January 2027.
+- Winter vacations: 21 December 2026 through 31 December 2026 (inclusive).
+
+SPRING SEMESTER 2027 (Morning/Evening)
+- Semester commencement: 18 January 2027.
+- Mid-term examinations: 24 March 2027 through 30 March 2027 (inclusive).
+- Sports Week: 31 March 2027 through 2 April 2027 (inclusive).
+- Final examinations: 3 June 2027 through 11 June 2027 (inclusive).
+- Results: 16 June 2027.
+- Summer vacations: 17 June 2027 through 30 August 2027 (inclusive).
+
+SUMMER SEMESTER 2027
+- Semester commencement: 21 June 2027.
+- Mid-term: 21 July 2027.
+- Final examinations: 23 August 2027.
+- Results: 25 August 2027.
+
+ACADEMIC CALENDAR IMPLEMENTATION REQUIREMENTS
+1. Build a typed calendar dataset, e.g. src/data/bzuAcademicCalendar.ts or JSON, with semesterId, title, audience (Morning/Evening where stated), eventType, startDate, endDate, sourceNotificationNumber, sourceNotificationDate, and sourceType='user-supplied-notification'. Render it in Student, Teacher and Admin calendars where relevant.
+2. Build an attractive Academic Calendar page supporting semester tabs (Fall 2026 / Spring 2027 / Summer 2027), list and calendar views, with clearly identified midterm/final periods, result dates, semester commencement, vacations and Sports Week. Offer a "View complete academic calendar" link from dashboards.
+3. Populate synthetic exams with plausible SUBJECT-SPECIFIC slots that fall WITHIN the appropriate official midterm/final exam windows. No exact paper day or hour is specified in the notification. Clearly label such individual schedules "Demo exam slot — not an official BZU date sheet". For example, a mock Fall final on 2027-01-05 at 10:00 Asia/Karachi is allowed as demo data but MUST NOT be claimed as an official exam time. Synthetic quiz and assignment dates are also demo dates.
+4. Give teachers a date/time picker prefilled or constrained by the relevant official semester exam window, with the ability to change demo exam slots; display a gentle warning when they choose an exam date outside its official window. Admin can adjust sample slots and record a rescheduling reason. Do not treat the official calendar itself as teacher-editable.
+5. For calendar events that are fixed official dates, preserve them exactly as written above (including the vacation periods). The supplied notification shows overlapping Summer Semester and Summer Vacations ranges; do not silently 'correct' this overlap. Display them as separate labeled university-calendar entries.
+6. Because the current calendar may be historical when the prototype is demonstrated, show Fall 2026, Spring 2027 and Summer 2027 as historical/reference calendar data regardless of today's date. Provide a SEPARATE clearly labeled "Interactive Demo Exam" sandbox with a rolling active/upcoming exam window anchored once on first run, so the exam-taking flow remains testable even after those dates pass. Do NOT change official dates dynamically to keep them current.
+7. Time display: use Asia/Karachi. The notification gives dates/date ranges but NOT individual paper start/end times. All invented hours must show a "Demo time" label. Never imply a date range guarantees an exam session for every course.
+8. Match calendar status against the actual date (past/current/future), but let demo simulation be tested independent of official date ranges. Keep original academic calendar entries read-only and use separate synthetic slot/assessment entities.
+
+DATA, TIME, GRADES AND DEMO CASES
+- Use Asia/Karachi timezone for display and scheduling; store timestamps consistently (e.g. ISO timestamps). Keep the official BZU semester dates fixed as supplied above. Separately seed interactive demo exam times around app initialization with a stable persisted reference so core demonstrations do not expire on reload.
+- Create complete example flows: currently available exam, upcoming exam, submitted exam, published marks, assignment open/closed, annotated PDF sample, pending revision request, approved and rejected requests, visibility allowed/denied.
+- Grades/CGPA are fictional and should be computed consistently with provided example credit hours or clearly labeled as seeded mock GPA; never call them official BZU transcripts.
+- Include accessible demo sample credentials in a small help panel (not real password claims). Avoid exposing personal data.
+
+ENGINEERING AND QUALITY EXPECTATIONS
+- Strictly typed interfaces / domain models, reusable components, structured folders (src/components, src/pages, src/features, src/data, src/hooks, src/lib, src/styles, src/types, etc.). Separate storage logic, auth-demo logic, grade calculations, exam timer logic and permission checks from UI.
+- No inert buttons. Every visible main action should work or be clearly disabled with an explanation. Provide loading, success and error feedback.
+- Handle edge cases: stale login, refresh, expired exam, zero remaining time, duplicate submission, unanswered MCQ, malformed file, unsupported speech recognition, missing PDF, teacher unassigned course, unauthorized student exam, pending admin approval, post-publication lock, browser storage failure, reduced-motion preference, mobile screen.
+- For large seed dataset, paginate or virtualize lists to keep UI responsive; don't render 500 full cards at once.
+- Write basic automated unit tests where practical for deadline/timer logic, role permissions, grade math, revision approval and publishing locks. Provide a concise manual QA checklist spanning the three roles.
+- Do not use unlicensed proprietary art, copyrighted BZU logo replicas drawn from memory, or secrets in code. Keep code clean, documented and accessible.
+
+DELIVERY INSTRUCTIONS FOR GOOGLE AI STUDIO / CODE GENERATOR
+A. FIRST, provide a concise implementation plan, feature-to-page map, data types and project tree (do not stop at plan).
+B. THEN generate actual complete project files in logical, executable batches. Include package.json, vite.config, tsconfig, Tailwind setup, src entrypoint, components, routes, seed generator, storage layer, exam flows, teacher checker, admin approvals, CSS, and vercel.json for SPA fallback. Use no fake imports, omitted files or TODO stubs for essential flows.
+C. For each batch, name files and provide their full contents; preserve consistent imports across batches. If response length is limited, prioritize a runnable vertical slice (Login -> Student Exam -> Teacher Grading -> Admin Marks Approval -> Student Results) before secondary features. At the end of each batch clearly identify the next unfinished files; continue in subsequent responses without rewriting complete prior files unnecessarily.
+D. Include exact local run commands: npm install, npm run dev, npm run build, npm run preview. Explain how to push to GitHub and deploy to Vercel Hobby as a static SPA, without requiring paid services.
+E. Provide demo credentials, demo walkthrough, a browser-storage limitations banner/help page, and steps to reset data.
+F. Before claiming completion, verify build/import consistency and describe which features are truly working vs simulated and any known limits. Do not assert tests passed unless executed.
+G. Make a convincing demonstration suitable for presenting the concept to university decision-makers while labeling it honestly as an unofficial prototype.
+
+FINAL ACCEPTANCE CHECKLIST — MUST PASS
+[ ] Appealing responsive futuristic UI with Auto/Light/Dark themes and Spider Cursor login effect.
+[ ] Two logo slots, with clearly labeled official-logo placeholder and original exam-platform branding.
+[ ] Student / Teacher / Admin demo login with correct roles and seeded 500/25/1 fictional records.
+[ ] Student dashboard shows only own details, academic progress, exams, assignments and permitted results.
+[ ] Teacher sees ONLY assigned classes, subjects, enrolled students and subject-specific grades.
+[ ] Teacher can create exam manually and import/edit PDF/DOCX questions with honest limitations.
+[ ] Students can attempt MCQs (1–5 per view), skip/revisit, type or dictate subjective answers, or provide single PDF.
+[ ] Strict fixed exam window, late entry with no extra time, refresh/reconnect continuation via local saved state.
+[ ] Browser tab/visibility incident WARNINGS and logs, not silent accidental auto-submit.
+[ ] Exam and assignment deadlines lock submission as specified.
+[ ] Teacher can preview/check PDFs on-site, annotate, grade and schedule release.
+[ ] MCQ scores withheld until combined result publication.
+[ ] Teacher changes to already saved marks before publication REQUIRE admin approval, with audit history.
+[ ] Pending revision holds publication; published results are locked against ordinary edits.
+[ ] Student only sees checked annotated paper when admin/university demo permission allows it.
+[ ] Admin can monitor, reschedule, approve revisions, set visibility policy and reset demo.
+[ ] Guided tour for first-time users and replay button.
+[ ] Official BZU Fall 2026, Spring 2027 and Summer 2027 schedule is included with exact published dates and notification attribution.
+[ ] Individual exam hours and subject-specific slots are visibly labeled as synthetic/demo and distinguished from official calendar windows.
+[ ] Fixed historical academic dates stay intact while a separate rolling demo exam allows live interaction.
+[ ] Full same-browser cross-role demo path works; separate-browser/device limitations are disclosed.
+[ ] GitHub -> Vercel static deployment works with free-tier constraints; no paid services necessary.
+
+START IMPLEMENTING NOW. Produce the plan and then complete runnable source code in progressive batches. Do not ask generic planning questions already resolved above; make careful, documented, free-tier-compatible implementation choices where needed.
